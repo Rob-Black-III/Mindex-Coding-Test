@@ -21,12 +21,13 @@ namespace CodeChallenge.Repositories
         {
             compensation.CompensationId = Guid.NewGuid().ToString();
             _dbContext.Compensation.Add(compensation);
+            _dbContext.SaveChangesAsync().Wait(); // Normally I use async tasks, and not blocking operations, but im following the example in employee.
             return compensation;
         }
 
         public Compensation GetByCompensationId(string compensationID)
         {
-            return _dbContext.Compensation.Find(compensationID);
+            return _dbContext.Compensation.Find(compensationID); // Use find for primary keys
         }
 
         public Compensation GetByEmployeeId(string employeeId)

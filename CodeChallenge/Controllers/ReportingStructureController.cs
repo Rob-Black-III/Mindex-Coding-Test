@@ -28,7 +28,7 @@ namespace CodeChallenge.Controllers
         public IActionResult CalculateDirectReportsForEmployee([FromQuery] Guid baseEmployeeId)
         {
             // Dotnet will automatically perform a null check on model binding (Guid cannot be null), no need to guard 'baseEmployeeId'.
-            // I chose to use GUID even though the provided underlying structure is string, because GUID more applicable. I will use strings for task 2.
+            // I chose to use GUID as an example even though the provided underlying structure is string, because GUID more applicable. I will use strings for task 2.
 
             // Short-circuit 'bad request' validation checking. Validation is also done downstream recursively in 'CalculateDirectReports'.
             // Checking in this layer allows us to determine the proper HTTP response code. Although it does couple our domain layer to our presentation layer in this case.
