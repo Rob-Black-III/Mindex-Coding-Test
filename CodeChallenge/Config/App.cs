@@ -41,9 +41,16 @@ namespace CodeChallenge.Config
 
         private void AddServices(IServiceCollection services)
         {
-
+            // Register Services and Repositories with the Dotnet Dependency Injection Framework
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IEmployeeRepository, EmployeeRespository>();
+
+            // Task 1
+            services.AddScoped<IReportingStructureService, ReportingStructureService>();
+
+            // Task 2
+            services.AddScoped<ICompensationRepository, CompensationRepository>();
+            services.AddScoped<ICompensationService, CompensationService>();
 
             services.AddControllers();
         }
