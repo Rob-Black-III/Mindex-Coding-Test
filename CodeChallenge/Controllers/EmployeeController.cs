@@ -45,6 +45,13 @@ namespace CodeChallenge.Controllers
             return Ok(employee);
         }
 
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            _logger.LogDebug($"[CompensationController][GetAll] Get All Compensations");
+            return Ok(_employeeService.GetAll());
+        }
+
         [HttpPut("{id}")]
         public IActionResult ReplaceEmployee(String id, [FromBody]Employee newEmployee)
         {

@@ -27,8 +27,3 @@ C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\refint\Code
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\CodeChallenge.pdb
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\CodeChallenge.genruntimeconfig.cache
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\ref\CodeChallenge.dll
-C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\staticwebassets\msbuild.CodeChallenge.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\staticwebassets\msbuild.build.CodeChallenge.props
-C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.CodeChallenge.props
-C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.CodeChallenge.props
-C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge\obj\Debug\net6.0\staticwebassets.pack.json

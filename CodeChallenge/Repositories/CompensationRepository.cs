@@ -3,6 +3,7 @@ using CodeChallenge.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,6 +40,12 @@ namespace CodeChallenge.Repositories
             _logger.LogDebug($"[CompensationRepository][GetByEmployeeId] Retrieving compensation with employeeId {employeeId} from the database.");
             // Assuming employee and compensation records are 1-1, and there cannot be multiple compensations for an employee.
             return _dbContext.Compensation.Include(c => c.Employee).SingleOrDefault(c => c.Employee.EmployeeId == employeeId); // Include FK resolution for Employee
+        }
+
+        // For debugging
+        public List<Compensation> GetAll()
+        {
+            return _dbContext.Compensation.Include(c => c.Employee).ToList(); ;
         }
 
         public Task SaveAsync()

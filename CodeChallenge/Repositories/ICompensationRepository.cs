@@ -1,5 +1,6 @@
 ﻿using CodeChallenge.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CodeChallenge.Repositories
@@ -10,6 +11,7 @@ namespace CodeChallenge.Repositories
         Compensation GetByCompensationId(String compensationId);
         Compensation GetByEmployeeId(String employeeId);
         Compensation Add(Compensation compensation);
+        List<Compensation> GetAll(); // For debugging and testing
         Task SaveAsync();
     }
 }

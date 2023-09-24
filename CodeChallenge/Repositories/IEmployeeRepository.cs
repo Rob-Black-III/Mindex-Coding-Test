@@ -1,5 +1,6 @@
 ﻿using CodeChallenge.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CodeChallenge.Repositories
@@ -9,6 +10,7 @@ namespace CodeChallenge.Repositories
         Employee GetById(String id);
         Employee Add(Employee employee);
         Employee Remove(Employee employee);
+        List<Employee> GetAll(); // for debugging
         Task SaveAsync();
     }
 }

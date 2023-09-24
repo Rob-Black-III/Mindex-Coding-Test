@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QyD9BGpJ8Vgs5us71Dd94MQYGNSkXRrNu263SCGSELlqn0OkdOT2MeQjBkvIeOeJeTmparsucwwIZdyJFDDrVA==",
+  "dgSpecHash": "/3E2GlkR5j/rwKf3D2/NiyIezwa2cnpLgYsIeOQIO/LDiTh9UHmcAgz1wj9D9QQD6xlR4u82AOzAeJNhbuGdUA==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Mindex\\Mindex-Coding-Test\\CodeChallenge.Tests\\CodeChallenge.Tests.Integration.csproj",
   "expectedPackageFiles": [
@@ -74,10 +74,7 @@
     "C:\\Users\\Rob Black\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Rob Black\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
     "C:\\Users\\Rob Black\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
-    "C:\\Users\\Rob Black\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
+    "C:\\Users\\Rob Black\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

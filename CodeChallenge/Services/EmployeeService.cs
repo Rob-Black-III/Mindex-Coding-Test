@@ -30,6 +30,11 @@ namespace CodeChallenge.Services
             return employee;
         }
 
+        public List<Employee> GetAll()
+        {
+            return _employeeRepository.GetAll();
+        }
+
         public Employee GetById(string id)
         {
             if(!String.IsNullOrEmpty(id))

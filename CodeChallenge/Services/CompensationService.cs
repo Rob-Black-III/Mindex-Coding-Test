@@ -2,6 +2,7 @@
 using CodeChallenge.Models;
 using CodeChallenge.Repositories;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace CodeChallenge.Services
 {
@@ -43,6 +44,12 @@ namespace CodeChallenge.Services
             _logger.LogDebug($"[CompensationService][Create] Added compensation {compSingleDTO.CompensationId}."); // Would normally use a regex formatter in prod.
 
             return compSingleDTO;
+        }
+
+        // For debugging
+        public List<Compensation> GetAll()
+        {
+            return _compensationRepository.GetAll();
         }
 
         public CompensationSingleDTO GetByCompensationId(string compensationId)

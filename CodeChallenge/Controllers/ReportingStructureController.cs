@@ -9,6 +9,7 @@ namespace CodeChallenge.Controllers
 {
     [ApiController]
     [Route("api/reportingstructure")]
+    //[Route("api/[controller]")]
     public class ReportingStructureController : ControllerBase
     {
         private readonly ILogger _logger;
@@ -24,15 +25,15 @@ namespace CodeChallenge.Controllers
             _employeeService = employeeService; //Only here for BadRequest validation, other logic will be in service layer to prevent a bloated controller.
         }
 
-        [HttpGet("{baseEmployeeId}", Name = "calculateDirectReportsForEmployee")]
-        public IActionResult CalculateDirectReportsForEmployee([FromQuery] Guid baseEmployeeId)
+        [HttpGet("{baseEmployeeId}")]
+        public IActionResult CalculateDirectReportsForEmployee(string baseEmployeeId)
         {
             // Dotnet will automatically perform a null check on model binding (Guid cannot be null), no need to guard 'baseEmployeeId'.
             // I chose to use GUID as an example even though the provided underlying structure is string, because GUID more applicable. I will use strings for task 2.
 
             // Short-circuit 'bad request' validation checking. Validation is also done downstream recursively in 'CalculateDirectReports'.
             // Checking in this layer allows us to determine the proper HTTP response code. Although it does couple our domain layer to our presentation layer in this case.
-            Employee employee = _employeeService.GetById(baseEmployeeId.ToString());
+            Employee employee = _employeeService.GetById(baseEmployeeId);
             if(employee is null)
             {
                 return BadRequest("The employee with the provided ID was not found.");
