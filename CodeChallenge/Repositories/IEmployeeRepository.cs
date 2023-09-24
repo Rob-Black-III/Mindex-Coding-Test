@@ -11,6 +11,7 @@ namespace CodeChallenge.Repositories
         Employee Add(Employee employee);
         Employee Remove(Employee employee);
         List<Employee> GetAll(); // for debugging
+        bool Exists(string id); // For short-circuit validation checks.
         Task SaveAsync();
     }
 }

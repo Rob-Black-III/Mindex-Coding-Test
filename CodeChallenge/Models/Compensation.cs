@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CodeChallenge.Utils;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace CodeChallenge.Models
 {
@@ -17,6 +19,7 @@ namespace CodeChallenge.Models
         public decimal Salary { get; set; }
 
         [Required]
+        [JsonConverter(typeof(DateOnlyJsonConverter))] // https://stackoverflow.com/questions/74246482/system-notsupportedexception-serialization-and-deserialization-of-system-dateo
         public DateOnly EffectiveDate { get; set; } // DateTime is most popular, but this specified just a date so it makes sense to use this.
     }
 }

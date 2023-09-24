@@ -17,7 +17,7 @@ namespace CodeChallenge.Services
             _compensationRepository = compensationRepository;
             _employeeService = employeeService;
         }
-        public CompensationSingleDTO Create(CompensationAddDTO compensationDto)
+        public CompensationSingleDTO? Create(CompensationAddDTO compensationDto)
         {
             // Map our request DTO to our Model Object
             // Normally I would use Mapster or Automapper but best not to overengineer for these simple cases.
@@ -31,6 +31,10 @@ namespace CodeChallenge.Services
 
             // Add the model to the db via the repository.
             Compensation addedCompensation = _compensationRepository.Add(newC);
+            if(addedCompensation is null)
+            {
+                return null; // bubble up to higher layers. (I would normally build in global error handling middleware and have a Result<> object to encapsulate success/fail states.
+            }
 
             // Map our added model to our response DTO
             CompensationSingleDTO compSingleDTO = new CompensationSingleDTO
@@ -46,6 +50,16 @@ namespace CodeChallenge.Services
             return compSingleDTO;
         }
 
+        public bool Exists(string id)
+        {
+            return _compensationRepository.Exists(id);
+        }
+
+        public bool ExistsForEmployeeWithId(string employeeId)
+        {
+            return _compensationRepository.ExistsForEmployeeWithId(employeeId);
+        }
+
         // For debugging
         public List<Compensation> GetAll()
         {
@@ -57,6 +71,9 @@ namespace CodeChallenge.Services
             Compensation compFromDb = _compensationRepository.GetByCompensationId(compensationId);
 
             // Map our added model to our response DTO
+            // There is debate whether the service layer should return DTOs or the domain objects themselves. i.e. where to map to dto.
+            // I think the service layer should return DTOs as all the 'business logic' should be in the application(service) and data(repo) layers.
+            // Presentation layer should be swappable and have no knowledge of domain concerns.
             CompensationSingleDTO compSingleDTO = new CompensationSingleDTO
             {
                 CompensationId = compFromDb.CompensationId,

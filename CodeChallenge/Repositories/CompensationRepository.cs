@@ -19,13 +19,22 @@ namespace CodeChallenge.Repositories
             _dbContext = dbContext;
             _logger = logger;
         }
-        public Compensation Add(Compensation compensation)
+        public Compensation? Add(Compensation compensation)
         {
-            compensation.CompensationId = Guid.NewGuid().ToString(); // Can specify autogeneration in EF settings. But will follow Employee convention
-            _dbContext.Compensation.Add(compensation);
-            _dbContext.SaveChangesAsync().Wait(); // Normally I use async tasks, and not blocking operations, but im following the example in employee.
-            _logger.LogDebug($"[CompensationRepository][Add] Added compensation {compensation.CompensationId} to the database.");
-            return compensation;
+            try
+            {
+                compensation.CompensationId = Guid.NewGuid().ToString(); // Can specify autogeneration in EF settings. But will follow Employee convention
+                _dbContext.Compensation.Add(compensation);
+                _dbContext.SaveChangesAsync().Wait(); // Normally I use async tasks, and not blocking operations, but im following the example in employee.
+                _logger.LogDebug($"[CompensationRepository][Add] Added compensation {compensation.CompensationId} to the database.");
+                return compensation;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"[CompensationRepository][Add] Failed to add compensation to the database.", ex.Message);
+                return null;
+            }
+
         }
 
         public Compensation GetByCompensationId(string compensationID)
@@ -52,6 +61,16 @@ namespace CodeChallenge.Repositories
         {
             _logger.LogDebug("[CompensationRepository][SaveAsync] Saving changes to DB via repository.");
             return _dbContext.SaveChangesAsync();
+        }
+
+        public bool Exists(string id)
+        {
+            return _dbContext.Compensation.Any(c => c.CompensationId == id);
+        }
+
+        public bool ExistsForEmployeeWithId(string employeeId)
+        {
+            return _dbContext.Compensation.Any(c => c.Employee.EmployeeId == employeeId);
         }
     }
 }

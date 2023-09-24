@@ -49,5 +49,10 @@ namespace CodeChallenge.Repositories
         {
             return _employeeContext.Remove(employee).Entity;
         }
+
+        public bool Exists(string id)
+        {
+            return _employeeContext.Employees.Any(e => e.EmployeeId == id);
+        }
     }
 }

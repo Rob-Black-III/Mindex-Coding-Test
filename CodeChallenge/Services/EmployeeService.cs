@@ -30,6 +30,11 @@ namespace CodeChallenge.Services
             return employee;
         }
 
+        public bool Exists(string id)
+        {
+            return _employeeRepository.Exists(id);
+        }
+
         public List<Employee> GetAll()
         {
             return _employeeRepository.GetAll();

@@ -3,7 +3,7 @@
 using CodeChallenge.Data;
 using CodeChallenge.Repositories;
 using CodeChallenge.Services;
-
+using CodeChallenge.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,7 +52,11 @@ namespace CodeChallenge.Config
             services.AddScoped<ICompensationRepository, CompensationRepository>();
             services.AddScoped<ICompensationService, CompensationService>();
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter()); // https://stackoverflow.com/questions/74246482/system-notsupportedexception-serialization-and-deserialization-of-system-dateo
+                });
         }
 
         private void SeedEmployeeDB()

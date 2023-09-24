@@ -9,8 +9,9 @@ namespace CodeChallenge.Services
     {
         CompensationSingleDTO GetByCompensationId(String compensationId);
         CompensationSingleDTO GetByEmployeeId(String employeeId);
-        CompensationSingleDTO Create(CompensationAddDTO compensationDto);
-
+        CompensationSingleDTO? Create(CompensationAddDTO compensationDto);
+        bool Exists(string id); // User for short-circuit checks to throw BadRequest.
+        bool ExistsForEmployeeWithId(string employeeId); // User for short-circuit checks to throw BadRequest.
         List<Compensation> GetAll(); // For debugging and testing
     }
 }

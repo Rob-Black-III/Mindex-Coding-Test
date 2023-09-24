@@ -10,6 +10,8 @@ namespace CodeChallenge.Services
     {
         Employee GetById(String id);
         List<Employee> GetAll(); // For debugging and testing
+
+        bool Exists(string id); // User for short-circuit checks to throw BadRequest.
         Employee Create(Employee employee);
         Employee Replace(Employee originalEmployee, Employee newEmployee);
     }
