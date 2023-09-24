@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RSAhYcBb6YZ8+AmzJ4yirbi/BghCv2Gq29dl3ezFsRXOxsu5bEAfYis2xNwp8v6USi3jKwcQxv1DQiC0ICtE7Q==",
+  "dgSpecHash": "sHfzP3n/gfYAYriDviLwLM0CM+2C/qda7ks1g/8D9DgWWcBQ6c4LmHHB/uRcZQgFLfgq1LpThaLmKfyczXbRow==",
   "success": true,
   "projectFilePath": "C:\\Projects\\Mindex\\Mindex-Coding-Test\\CodeChallenge\\CodeChallenge.csproj",
   "expectedPackageFiles": [
@@ -21,7 +21,11 @@
     "C:\\Users\\Rob Black\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Rob Black\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Rob Black\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\Rob Black\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Rob Black\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\Rob Black\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.12\\microsoft.netcore.app.host.win-x64.6.0.12.nupkg.sha512"
   ],
   "logs": []
 }

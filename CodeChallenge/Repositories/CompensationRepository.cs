@@ -1,5 +1,6 @@
 ﻿using CodeChallenge.Data;
 using CodeChallenge.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CodeChallenge.Repositories
     public class CompensationRepository : ICompensationRepository
     {
         private readonly EmployeeContext _dbContext;
-        private readonly ILogger<ICompensationRepository> _logger;
+        private readonly ILogger _logger;
 
         public CompensationRepository(ILogger<ICompensationRepository> logger, EmployeeContext dbContext)
         {
@@ -19,24 +20,30 @@ namespace CodeChallenge.Repositories
         }
         public Compensation Add(Compensation compensation)
         {
-            compensation.CompensationId = Guid.NewGuid().ToString();
+            compensation.CompensationId = Guid.NewGuid().ToString(); // Can specify autogeneration in EF settings. But will follow Employee convention
             _dbContext.Compensation.Add(compensation);
             _dbContext.SaveChangesAsync().Wait(); // Normally I use async tasks, and not blocking operations, but im following the example in employee.
+            _logger.LogDebug($"[CompensationRepository][Add] Added compensation {compensation.CompensationId} to the database.");
             return compensation;
         }
 
         public Compensation GetByCompensationId(string compensationID)
         {
-            return _dbContext.Compensation.Find(compensationID); // Use find for primary keys
+            _logger.LogDebug($"[CompensationRepository][GetByCompensationId] Retrieving compensation with compensationID {compensationID} from the database.");
+            // Assuming employee and compensation records are 1-1, and there cannot be multiple compensations for an employee.
+            return _dbContext.Compensation.Include(c => c.Employee).SingleOrDefault(c => c.CompensationId == compensationID); // Include FK resolution for Employee
         }
 
         public Compensation GetByEmployeeId(string employeeId)
         {
-            return _dbContext.Compensation.SingleOrDefault(c => c.Employee.EmployeeId == employeeId);
+            _logger.LogDebug($"[CompensationRepository][GetByEmployeeId] Retrieving compensation with employeeId {employeeId} from the database.");
+            // Assuming employee and compensation records are 1-1, and there cannot be multiple compensations for an employee.
+            return _dbContext.Compensation.Include(c => c.Employee).SingleOrDefault(c => c.Employee.EmployeeId == employeeId); // Include FK resolution for Employee
         }
 
         public Task SaveAsync()
         {
+            _logger.LogDebug("[CompensationRepository][SaveAsync] Saving changes to DB via repository.");
             return _dbContext.SaveChangesAsync();
         }
     }

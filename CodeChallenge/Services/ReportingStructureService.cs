@@ -7,9 +7,9 @@ namespace CodeChallenge.Services
     public class ReportingStructureService : IReportingStructureService
     {
         private readonly IEmployeeService _employeeService;
-        private readonly ILogger<IReportingStructureService> _logger;
+        private readonly ILogger _logger;
 
-        public ReportingStructureService(Logger<IReportingStructureService> logger, IEmployeeService employeeService)
+        public ReportingStructureService(ILogger<IReportingStructureService> logger, IEmployeeService employeeService)
         {
             _logger = logger;
             _employeeService = employeeService;
@@ -58,7 +58,7 @@ namespace CodeChallenge.Services
                     {
                         // Log the error
                         // Could catch each exception individually (case by case per business logic), but for demonstration and brevity this is sufficient.
-                        _logger.LogError("An unexpected error occured.", ex.Message);
+                        _logger.LogError("[ReportingStructureService][RecursivelyCalculateDirectReports] An unexpected error occured.", ex.Message);
 
                         // Return null (to be converted to 500 in presentation layer)
                         return null;
@@ -66,6 +66,7 @@ namespace CodeChallenge.Services
                 }
                 
             }
+            _logger.LogDebug("[ReportingStructureService][RecursivelyCalculateDirectReports] Calculated all direct reports.");
             return 0;
         }
 

@@ -7,7 +7,7 @@ namespace CodeChallenge.Services
 {
     public class CompensationService : ICompensationService
     {
-        private readonly ILogger<ICompensationService> _logger;
+        private readonly ILogger _logger;
         private readonly ICompensationRepository _compensationRepository;
         private readonly IEmployeeService _employeeService;
         public CompensationService(ILogger<ICompensationService> logger, ICompensationRepository compensationRepository, IEmployeeService employeeService)
@@ -40,6 +40,8 @@ namespace CodeChallenge.Services
                 EffectiveDate = addedCompensation.EffectiveDate
             };
 
+            _logger.LogDebug($"[CompensationService][Create] Added compensation {compSingleDTO.CompensationId}."); // Would normally use a regex formatter in prod.
+
             return compSingleDTO;
         }
 
@@ -56,6 +58,8 @@ namespace CodeChallenge.Services
                 EffectiveDate = compFromDb.EffectiveDate
             };
 
+            _logger.LogDebug($"[CompensationService][GetByCompensationId] Retrieved compensation {compSingleDTO.CompensationId}."); // Would normally use a regex formatter in prod.
+
             return compSingleDTO;
         }
 
@@ -71,6 +75,8 @@ namespace CodeChallenge.Services
                 Salary = compFromDb.Salary,
                 EffectiveDate = compFromDb.EffectiveDate
             };
+
+            _logger.LogDebug($"[CompensationService][GetByEmployeeId] Retrieved compensation {compSingleDTO.CompensationId}."); // Would normally use a regex formatter in prod.
 
             return compSingleDTO;
         }
