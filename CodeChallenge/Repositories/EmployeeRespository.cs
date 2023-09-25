@@ -27,17 +27,9 @@ namespace CodeChallenge.Repositories
             return employee;
         }
 
-        // For debugging
-        public List<Employee> GetAll()
-        {
-            // return _employeeContext.Employees.Include(e => e.DirectReports).ToList();
-            // We dont want massive payloads. Can be included when needed.
-            return _employeeContext.Employees.ToList();
-        }
-
         public Employee GetById(string id)
         {
-            return _employeeContext.Employees.Include(e => e.DirectReports).SingleOrDefault(e => e.EmployeeId == id);
+            return _employeeContext.Employees.Include(e => e.DirectReports).SingleOrDefault(e => e.EmployeeId == id); // TODO Added Include to show bug
         }
 
         public Task SaveAsync()
@@ -48,6 +40,15 @@ namespace CodeChallenge.Repositories
         public Employee Remove(Employee employee)
         {
             return _employeeContext.Remove(employee).Entity;
+        }
+        // MY CODE --------
+
+        // For debugging
+        public List<Employee> GetAll()
+        {
+            // return _employeeContext.Employees.Include(e => e.DirectReports).ToList();
+            // We dont want massive payloads. Can be included when needed.
+            return _employeeContext.Employees.ToList();
         }
 
         public bool Exists(string id)

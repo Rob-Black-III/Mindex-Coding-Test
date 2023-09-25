@@ -37,7 +37,6 @@ namespace CodeChallenge.Services
 
         private int? RecursivelyCalculateDirectReports(string currentEmployeeId)
         {
-            // Given the fact the DB uses string instead of guid, it would be easier to use 'string' here. But its nice to have additional validation considering it *is* a GUID
             // Even though I said I prefer 'callee' validation, we already validated in this layer. No need to validate employee itself again.
             Employee currentEmployee = _employeeService.GetById(currentEmployeeId);
             if(currentEmployee.DirectReports != null && currentEmployee.DirectReports.Count != 0)

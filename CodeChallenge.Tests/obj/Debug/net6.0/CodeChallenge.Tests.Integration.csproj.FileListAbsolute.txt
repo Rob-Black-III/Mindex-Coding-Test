@@ -407,3 +407,4 @@ C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge.Tests\obj\Debug\net6.0\refin
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge.Tests\obj\Debug\net6.0\CodeChallenge.Tests.Integration.pdb
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge.Tests\obj\Debug\net6.0\CodeChallenge.Tests.Integration.genruntimeconfig.cache
 C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge.Tests\obj\Debug\net6.0\ref\CodeChallenge.Tests.Integration.dll
+C:\Projects\Mindex\Mindex-Coding-Test\CodeChallenge.Tests\bin\Debug\net6.0\Mindex Coding Test Collection.postman_collection.json

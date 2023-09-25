@@ -42,15 +42,8 @@ namespace CodeChallenge.Controllers
             return Ok(employee);
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            _logger.LogDebug($"[CompensationController][GetAll] Get All Compensations");
-            return Ok(_employeeService.GetAll());
-        }
-
         [HttpPut("{id}")]
-        public IActionResult ReplaceEmployee(String id, [FromBody]Employee newEmployee)
+        public IActionResult ReplaceEmployee(String id, [FromBody] Employee newEmployee)
         {
             _logger.LogDebug($"Recieved employee update request for '{id}'");
 
@@ -61,6 +54,13 @@ namespace CodeChallenge.Controllers
             _employeeService.Replace(existingEmployee, newEmployee);
 
             return Ok(newEmployee);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            _logger.LogDebug($"[CompensationController][GetAll] Get All Compensations");
+            return Ok(_employeeService.GetAll());
         }
     }
 }

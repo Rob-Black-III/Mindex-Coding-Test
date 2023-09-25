@@ -13,7 +13,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CodeCodeChallenge.Tests.Integration
 {
     [TestClass]
-    public class EmployeeControllerTests
+    public class EmployeeControllerBugTests
     {
         private static HttpClient _httpClient;
         private static TestServer _testServer;

@@ -19,7 +19,7 @@ namespace CodeChallenge.Services
 
         public Employee Create(Employee employee)
         {
-            if(employee != null)
+            if (employee != null)
             {
                 _employeeRepository.Add(employee);
                 _employeeRepository.SaveAsync().Wait();
@@ -28,19 +28,9 @@ namespace CodeChallenge.Services
             return employee;
         }
 
-        public bool Exists(string id)
-        {
-            return _employeeRepository.Exists(id);
-        }
-
-        public List<Employee> GetAll()
-        {
-            return _employeeRepository.GetAll();
-        }
-
         public Employee GetById(string id)
         {
-            if(!String.IsNullOrEmpty(id))
+            if (!String.IsNullOrEmpty(id))
             {
                 return _employeeRepository.GetById(id);
             }
@@ -50,7 +40,7 @@ namespace CodeChallenge.Services
 
         public Employee Replace(Employee originalEmployee, Employee newEmployee)
         {
-            if(originalEmployee != null)
+            if (originalEmployee != null)
             {
                 _employeeRepository.Remove(originalEmployee);
                 if (newEmployee != null)
@@ -66,6 +56,18 @@ namespace CodeChallenge.Services
             }
 
             return newEmployee;
+        }
+
+    // MY CODE BELOW
+
+    public bool Exists(string id)
+        {
+            return _employeeRepository.Exists(id);
+        }
+
+        public List<Employee> GetAll()
+        {
+            return _employeeRepository.GetAll();
         }
     }
 }

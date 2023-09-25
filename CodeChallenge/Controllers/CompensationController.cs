@@ -71,7 +71,7 @@ namespace CodeChallenge.Controllers
             // In that case we should just make a patch and keep 'create' for new entities only.
             if (_compensationService.ExistsForEmployeeWithId(compensationAddDTO.EmployeeID))
             {
-                return BadRequest("Compensation with the provided employee ID already exists.");
+                return Conflict("Compensation with the provided employee ID already exists.");
             }
 
             // Create the compensation and return
