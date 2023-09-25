@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "cd5ad798-b0ae-4b23-a1db-d46bbfcb4329",
+		"name": "Mindex Coding Test Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12624716",
+		"_collection_link": "https://www.postman.com/thale-dev/workspace/mindex-coding-test/collection/12624716-cd5ad798-b0ae-4b23-a1db-d46bbfcb4329?action=share&source=collection_link&creator=12624716"
+	},
+	"item": [
+		{
+			"name": "ReportingStructure",
+			"item": [
+				{
+					"name": "GetDirectReportCount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/reportingstructure/16a596ae-edd3-4847-99fe-c4518e82c86f",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reportingstructure",
+								"16a596ae-edd3-4847-99fe-c4518e82c86f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Employee",
+			"item": [
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employee/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employee",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/employee/03aa1462-ffa9-4978-901b-7c001562cf6f",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"employee",
+								"03aa1462-ffa9-4978-901b-7c001562cf6f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Compensation",
+			"item": [
+				{
+					"name": "Get All Compensations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/compensation/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compensation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Compensation With EmployeeId",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EmployeeID\": \"16a596ae-edd3-4847-99fe-c4518e82c86f\",\r\n    \"Salary\": 100000,\r\n    \"EffectiveDate\": \"2023-09-24\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/compensation/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compensation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Compensation by EmployeeID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/compensation/16a596ae-edd3-4847-99fe-c4518e82c86f",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"compensation",
+								"16a596ae-edd3-4847-99fe-c4518e82c86f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

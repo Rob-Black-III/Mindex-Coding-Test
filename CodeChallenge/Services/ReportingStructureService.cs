@@ -26,12 +26,9 @@ namespace CodeChallenge.Services
 
             // Fetch employee with given 'baseEmployeeId' from the db via service.
             // Even though we already performed 'caller validation' I prefer 'callee' validation so I'm doing it again here. (keep responsibility in-house)
-            Employee startEmployee = _employeeService.GetById(baseEmployeeId);
-
-            // Because the repository layer uses EF Core's 'SingleOrDefault', we only need to perform a null check for validation handling (as null is the default)
-            if(startEmployee is null)
+            if(!_employeeService.Exists(baseEmployeeId))
             {
-                return null;
+                return null; // bubble up error.
             }
 
             // Recursively get the count

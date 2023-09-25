@@ -55,7 +55,9 @@ namespace CodeChallenge.Config
             services.AddControllers()
                 .AddJsonOptions(options =>
                 {
-                    options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter()); // https://stackoverflow.com/questions/74246482/system-notsupportedexception-serialization-and-deserialization-of-system-dateo
+                    options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter()); 
+                    // For the DateOnly Object in Compensation model.
+                    // https://stackoverflow.com/questions/74246482/system-notsupportedexception-serialization-and-deserialization-of-system-dateo
                 });
         }
 

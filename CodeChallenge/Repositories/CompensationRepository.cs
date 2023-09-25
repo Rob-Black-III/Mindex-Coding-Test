@@ -23,6 +23,8 @@ namespace CodeChallenge.Repositories
         {
             try
             {
+                // Could have transaction commit and rollback logic here if needed...
+
                 compensation.CompensationId = Guid.NewGuid().ToString(); // Can specify autogeneration in EF settings. But will follow Employee convention
                 _dbContext.Compensation.Add(compensation);
                 _dbContext.SaveChangesAsync().Wait(); // Normally I use async tasks, and not blocking operations, but im following the example in employee.

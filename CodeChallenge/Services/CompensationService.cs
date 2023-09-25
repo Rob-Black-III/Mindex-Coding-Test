@@ -87,9 +87,14 @@ namespace CodeChallenge.Services
             return compSingleDTO;
         }
 
-        public CompensationSingleDTO GetByEmployeeId(string employeeId)
+        public CompensationSingleDTO? GetByEmployeeId(string employeeId)
         {
             Compensation compFromDb = _compensationRepository.GetByEmployeeId(employeeId);
+
+            if(compFromDb is null)
+            {
+                return null;
+            }
 
             // Map our added model to our response DTO
             CompensationSingleDTO compSingleDTO = new CompensationSingleDTO

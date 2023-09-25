@@ -16,13 +16,13 @@ namespace CodeChallenge.Controllers
         private readonly IReportingStructureService _reportingStructureService;
         private readonly IEmployeeService _employeeService;
 
-        // NOTE: I WOULD NEVER EVER ADD THIS MANY COMMENTS HAHA (THOUGH I DO LIKE DOCUMENTATION). I JUST WANT YOU ALL TO GET A FEEL FOR MY THOUGHTPROCESS
+        // NOTE: I NORMALL DON'T COMMENT THIS MUCH (THOUGH I DO LIKE DOCUMENTATION). I JUST WANT YOU ALL TO GET A FEEL FOR MY THOUGHT PROCESS
 
         public ReportingStructureController(ILogger<ReportingStructureController> logger, IReportingStructureService reportingStructureService, IEmployeeService employeeService)
         {
             _logger = logger;
             _reportingStructureService = reportingStructureService;
-            _employeeService = employeeService; //Only here for BadRequest validation, other logic will be in service layer to prevent a bloated controller.
+            _employeeService = employeeService; // Only here for validation, other logic will be in service layer to prevent a bloated controller.
         }
 
         [HttpGet("{baseEmployeeId}")]
@@ -31,12 +31,11 @@ namespace CodeChallenge.Controllers
             // Dotnet will automatically perform a null check on model binding (Guid cannot be null), no need to guard 'baseEmployeeId'.
             // I chose to use GUID as an example even though the provided underlying structure is string, because GUID more applicable. I will use strings for task 2.
 
-            // Short-circuit 'bad request' validation checking. Validation is also done downstream recursively in 'CalculateDirectReports'.
-            // Checking in this layer allows us to determine the proper HTTP response code. Although it does couple our domain layer to our presentation layer in this case.
-            Employee employee = _employeeService.GetById(baseEmployeeId);
-            if(employee is null)
+            // Short-circuit validation checking. Validation is also done downstream recursively in 'CalculateDirectReports'.
+            // Checking in this layer allows us to determine the proper HTTP response code.
+            if(!_employeeService.Exists(baseEmployeeId))
             {
-                return BadRequest("The employee with the provided ID was not found.");
+                return NotFound("The employee with the provided ID was not found.");
             }
 
             // Do the actual calculation
@@ -51,7 +50,7 @@ namespace CodeChallenge.Controllers
                 ReportingStructureSingleDTO report = new ReportingStructureSingleDTO
                 {
                     NumberOfReports = numDirectReports.Value,
-                    Employee = employee
+                    Employee = _employeeService.GetById(baseEmployeeId),
                 };
                 return Ok(report);
             }
