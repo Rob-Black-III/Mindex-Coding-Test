@@ -11,7 +11,7 @@ namespace CodeChallenge.Repositories
         Compensation GetByCompensationId(String compensationId);
         Compensation GetByEmployeeId(String employeeId);
         Compensation? Add(Compensation compensation);
-        List<Compensation> GetAll(); // For debugging and testing
+        List<Compensation> GetAll();
 
         bool Exists(string id); // User for short-circuit checks to throw BadRequest.
         bool ExistsForEmployeeWithId(string employeeId); // User for short-circuit checks to throw BadRequest.

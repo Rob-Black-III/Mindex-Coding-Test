@@ -14,6 +14,8 @@ namespace CodeChallenge.Controllers
         private readonly ICompensationService _compensationService;
         private readonly IEmployeeService _employeeService;
 
+        // NOTE: I NORMALL DON'T COMMENT THIS MUCH (THOUGH I DO LIKE DOCUMENTATION). I JUST WANT YOU ALL TO GET A FEEL FOR MY THOUGHT PROCESS
+
         public CompensationController(ILogger<EmployeeController> logger, ICompensationService compService, IEmployeeService employeeService)
         {
             _logger = logger;
@@ -42,6 +44,7 @@ namespace CodeChallenge.Controllers
             // Get the compensation
             CompensationSingleDTO? c = _compensationService.GetByEmployeeId(employeeId);
 
+            // Null could also mean internal server error so we'd need more robust checking in prod for an actual implementation.
             if(c is null)
             {
                 return NotFound("The compensation with the provided employee id could not be found.");
@@ -52,9 +55,8 @@ namespace CodeChallenge.Controllers
             }
         }
 
-        // I've never done routes with the 'Name' param for the httpget attribute/annotation,
-        // I've always specified the route and used query params, [FromQuery], and [FromBody] (some are implicit)
-        // I skipped validation for malformed payloads (model binding with dotnet core) as I think it is out of scope for what you are testing for. I can send you my Dotnet 7 boilerplate where i do so per request.
+        // I skipped validation for malformed payloads (model binding with dotnet core) as I think it is out of scope for what you are testing for.
+        // I can send you my Dotnet 7 boilerplate where i do so per request.
         [HttpPost] 
         public IActionResult CreateCompensation([FromBody] CompensationAddDTO compensationAddDTO)
         {

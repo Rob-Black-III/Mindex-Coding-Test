@@ -53,7 +53,6 @@ namespace CodeChallenge.Repositories
             return _dbContext.Compensation.Include(c => c.Employee).SingleOrDefault(c => c.Employee.EmployeeId == employeeId); // Include FK resolution for Employee
         }
 
-        // For debugging
         public List<Compensation> GetAll()
         {
             return _dbContext.Compensation.Include(c => c.Employee).ToList(); ;

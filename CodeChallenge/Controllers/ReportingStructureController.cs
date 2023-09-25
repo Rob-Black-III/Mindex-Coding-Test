@@ -28,9 +28,7 @@ namespace CodeChallenge.Controllers
         [HttpGet("{baseEmployeeId}")]
         public IActionResult CalculateDirectReportsForEmployee(string baseEmployeeId)
         {
-            // Dotnet will automatically perform a null check on model binding (Guid cannot be null), no need to guard 'baseEmployeeId'.
-            // I chose to use GUID as an example even though the provided underlying structure is string, because GUID more applicable. I will use strings for task 2.
-
+            // In prod, would want to have a validation actionfilter / middleware to make sure model binding works as intended (strings can be inherently null)
             // Short-circuit validation checking. Validation is also done downstream recursively in 'CalculateDirectReports'.
             // Checking in this layer allows us to determine the proper HTTP response code.
             if(!_employeeService.Exists(baseEmployeeId))

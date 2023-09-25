@@ -6,13 +6,13 @@ namespace CodeChallenge.DTOs
     public record struct CompensationSingleDTO // Represents the user-facing data we want to return representing a single instance of a Compensation Entity (sensitive fields removed).
     {
         public String CompensationId { get; set; } // Assuming we want to expose this to user/frontend
-        public String EmployeeID { get; set; } // I know the readme says employee instead of employeeID but it makes sense at this level to use ID
+        public String EmployeeID { get; set; } // DTOs use ID instead of the entire domain model
         public decimal Salary { get; set; }
         public DateOnly EffectiveDate { get; set; }
     }
     public record struct CompensationAddDTO // Represents our Compensation Create DTO with all required fields to make our domain-entity for Compensation.
     {
-        public String EmployeeID { get; set; } // I know the readme says employee instead of employeeID but it makes sense at this level to use ID
+        public String EmployeeID { get; set; } // DTOs use ID instead of the entire domain model
         public decimal Salary { get; set; }
         public DateOnly EffectiveDate { get; set; }
     }

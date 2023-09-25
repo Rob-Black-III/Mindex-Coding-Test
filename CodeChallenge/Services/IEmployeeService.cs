@@ -9,7 +9,7 @@ namespace CodeChallenge.Services
     public interface IEmployeeService
     {
         Employee GetById(String id);
-        List<Employee> GetAll(); // For debugging and testing
+        List<Employee> GetAll();
 
         bool Exists(string id); // User for short-circuit checks to throw BadRequest.
         Employee Create(Employee employee);
